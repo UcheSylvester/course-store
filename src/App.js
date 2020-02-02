@@ -6,6 +6,7 @@ import HomePage from './pages/homepage/homepage.component';
 import Header from './components/header/header.component';
 import CoursesPage from './pages/courses-page/courses-page.component';
 import PageNotFound from './pages/not-found-page/not-found-page.component';
+import ManageCoursePage from './pages/manage-course-page/manage-course-page.component';
 
 const App = () => (
   <div className="container-fluid">
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path='/' component={HomePage} />
       <Route path='/courses' component={CoursesPage} />
       <Route path='/about' component={AboutPage} />
+      <Route path='/course/:slug' component={ManageCoursePage} />
       <Route component={PageNotFound} />
     </Switch>
   </div>
