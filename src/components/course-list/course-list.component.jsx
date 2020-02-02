@@ -30,7 +30,7 @@ CourseList.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       authorId: PropTypes.number.isRequired,
-      category: <PropTypes className="string isR"></PropTypes>
+      category: PropTypes.string.isRequired
     })
   ).isRequired
 };
