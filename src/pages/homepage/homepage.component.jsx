@@ -5,7 +5,9 @@ const HomePage = () => (
   <div className="jumbotron">
     <h1>Course Management System!</h1>
 
-    <Link to="/about">about</Link>
+    <Link to="about" className="btn btn-primary">
+      about
+    </Link>
   </div>
 );
 
