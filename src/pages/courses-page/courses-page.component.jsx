@@ -1,5 +1,6 @@
 import React from "react";
 import { getCourses } from "../../api/courseApi";
+import Course from "../../components/course/course.component";
 
 class CoursesPage extends React.Component {
   state = {
@@ -28,12 +29,8 @@ class CoursesPage extends React.Component {
           </thead>
 
           <tbody>
-            {courses.map(({ id, title, authorId, category }) => (
-              <tr key={id}>
-                <td>{title}</td>
-                <td>{authorId}</td>
-                <td>{category}</td>
-              </tr>
+            {courses.map(({ id, ...otherCourseProps }) => (
+              <Course key={id} {...otherCourseProps} />
             ))}
           </tbody>
         </table>
