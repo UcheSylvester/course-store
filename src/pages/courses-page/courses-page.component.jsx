@@ -11,7 +11,12 @@ const CoursesPage = () => {
     getCourses().then(courses => setCourses(courses));
   }, []);
 
-  return <CourseList courses={courses} />;
+  return (
+    <>
+      <h2>Courses</h2>
+      <CourseList courses={courses} />
+    </>
+  );
 };
 
 export default CoursesPage;

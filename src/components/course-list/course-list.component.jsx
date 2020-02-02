@@ -1,10 +1,11 @@
 import React from "react";
+
+import PropTypes from "prop-types";
+
 import Course from "../course/course.component";
 
 const CourseList = ({ courses }) => (
   <>
-    <h2>Courses</h2>
-
     <table className="table">
       <thead>
         <tr>
@@ -22,5 +23,16 @@ const CourseList = ({ courses }) => (
     </table>
   </>
 );
+
+CourseList.propTypes = {
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      authorId: PropTypes.number.isRequired,
+      category: <PropTypes className="string isR"></PropTypes>
+    })
+  ).isRequired
+};
 
 export default CourseList;
