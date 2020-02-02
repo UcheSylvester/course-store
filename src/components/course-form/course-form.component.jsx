@@ -1,6 +1,9 @@
 import React from "react";
 
-const CourseForm = () => {
+const CourseForm = ({
+  course: { title, authorId, category },
+  onInputChange
+}) => {
   return (
     <form>
       <div className="form-group">
@@ -9,9 +12,10 @@ const CourseForm = () => {
           <input
             type="text"
             id="title"
-            value=""
+            value={title}
             name="title"
             className="form-control"
+            onChange={onInputChange}
           />
         </div>
       </div>
@@ -23,20 +27,25 @@ const CourseForm = () => {
             className="form-control"
             name="authorId"
             id="author"
-            value=""
-          ></select>
+            value={authorId || ""}
+            onChange={onInputChange}
+          >
+            <option value="1">Cory House</option>
+            <option value="2">Scot Allen</option>
+          </select>
         </div>
       </div>
 
       <div className="form-group">
-        <label htmlFor="title">Title</label>
+        <label htmlFor="category">Category</label>
         <div className="field">
           <input
             type="text"
-            id="title"
-            value=""
-            name="title"
+            id="category"
+            value={category}
+            name="category"
             className="form-control"
+            onChange={onInputChange}
           />
         </div>
       </div>
