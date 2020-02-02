@@ -1,42 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getCourses } from "../../api/courseApi";
 import Course from "../../components/course/course.component";
 
-class CoursesPage extends React.Component {
-  state = {
-    courses: []
-  };
+const CoursesPage = () => {
+  const [courses, setCourses] = useState([]);
 
-  componentDidMount() {
-    getCourses().then(courses => this.setState({ courses: courses }));
-  }
-  render() {
-    console.log(this.state);
+  useEffect(() => {
+    getCourses().then(courses => setCourses(courses));
+  }, []);
 
-    const { courses } = this.state;
+  // const { courses } = this.state;
 
-    return (
-      <>
-        <h2>Courses</h2>
+  return (
+    <>
+      <h2>Courses</h2>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author ID</th>
-              <th>Category</th>
-            </tr>
-          </thead>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author ID</th>
+            <th>Category</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {courses.map(({ id, ...otherCourseProps }) => (
-              <Course key={id} {...otherCourseProps} />
-            ))}
-          </tbody>
-        </table>
-      </>
-    );
-  }
-}
+        <tbody>
+          {courses.map(({ id, ...otherCourseProps }) => (
+            <Course key={id} {...otherCourseProps} />
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 export default CoursesPage;
