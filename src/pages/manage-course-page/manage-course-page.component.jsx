@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as courseApi from "../../api/courseApi";
 
 import CourseForm from "../../components/course-form/course-form.component";
+import { toast } from "react-toastify";
 // import { Prompt } from "react-router-dom";
 
 const ManageCoursePage = ({ history }) => {
@@ -25,7 +26,10 @@ const ManageCoursePage = ({ history }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    courseApi.saveCourse(course).then(data => history.push("/courses"));
+    courseApi.saveCourse(course).then(() => {
+      toast.success("Course saved successfully!");
+      history.push("/courses");
+    });
   };
 
   return (

@@ -72,19 +72,19 @@
     },
     {
       "id": 11,
-      "title": "JavaScript the Good parts",
+      "title": "Rich Dad Poor Dad",
       "authorId": 2,
       "category": "JavaScript",
-      "slug": "javascript-the-good-parts",
-      "createdAt": 1580711424225
+      "slug": "rich-dad-poor-dad",
+      "createdAt": 1580712581864
     },
     {
       "id": 12,
-      "title": "Uche",
+      "title": "Good parts of JS",
       "authorId": 2,
       "category": "JavaScript",
-      "slug": "uche",
-      "createdAt": 1580711653894
+      "slug": "good-parts-of-js",
+      "createdAt": 1580712762118
     }
   ],
   "authors": [
