@@ -85,6 +85,14 @@
       "category": "JavaScript",
       "slug": "good-parts-of-js",
       "createdAt": 1580712762118
+    },
+    {
+      "id": 13,
+      "title": "Uche",
+      "authorId": 2,
+      "category": "JavaScript",
+      "slug": "uche",
+      "createdAt": 1580713646997
     }
   ],
   "authors": [

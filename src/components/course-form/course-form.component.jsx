@@ -6,7 +6,8 @@ import CustomButton from "../custom-button/custom-button.component";
 const CourseForm = ({
   course: { title, authorId, category },
   onChange,
-  onSubmit
+  onSubmit,
+  errors
 }) => (
   <form onSubmit={onSubmit}>
     <TextInput
@@ -16,6 +17,7 @@ const CourseForm = ({
       name="title"
       onChange={onChange}
       label="Title"
+      error={errors.title}
     />
 
     <select
@@ -28,6 +30,9 @@ const CourseForm = ({
       <option value="1">Cory House</option>
       <option value="2">Scot Allen</option>
     </select>
+    {errors.authorId && (
+      <div className="alert alert-danger">{errors.authorId}</div>
+    )}
 
     <TextInput
       type="text"
@@ -36,6 +41,7 @@ const CourseForm = ({
       value={category}
       name="category"
       onChange={onChange}
+      error={errors.category}
     />
 
     <CustomButton className="btn btn-primary" type="submit">
