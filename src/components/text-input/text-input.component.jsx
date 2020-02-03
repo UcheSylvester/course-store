@@ -1,24 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextInput = props => (
-  <div
-    className={`${props.error &&
-      props.error.length} ? has-error : '' form-group`}
-  >
-    <label htmlFor={props.id}>{props.title}</label>
+const TextInput = ({ label, onChange, error, id, ...otherProps }) => (
+  <div className={`${error && error.length} ? has-error : '' form-group`}>
+    <label htmlFor={id}>{label}</label>
     <div className="field">
-      <input
-        type={props.type}
-        id={props.id}
-        value={props.value}
-        name={props.name}
-        className="form-control"
-        onChange={props.onChange}
-      />
+      <input className="form-control" onChange={onChange} {...otherProps} />
     </div>
 
-    {props.error && <div className="alert alert-danger">{props.error} </div>}
+    {error && <div className="alert alert-danger">{error} </div>}
   </div>
 );
 
@@ -32,7 +22,7 @@ TextInput.propTypes = {
   label: PropTypes.string.isRequired
 };
 
-TextInput.defaultProps = {
+TextInput.default = {
   error: ""
 };
 

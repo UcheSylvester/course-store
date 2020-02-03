@@ -18,6 +18,7 @@ const ManageCoursePage = props => {
     const updatedCourse = { ...course, [name]: value };
 
     setCourse(updatedCourse, []);
+    console.log(name, value);
   };
 
   return (
