@@ -12,7 +12,7 @@ const ManageCoursePage = props => {
     slug: ""
   });
 
-  const handleInputChange = event => {
+  const handleChange = event => {
     const { value, name } = event.target;
 
     const updatedCourse = { ...course, [name]: value };
@@ -24,7 +24,7 @@ const ManageCoursePage = props => {
     <div>
       <h2>Manage Courses</h2>
       {/* <Prompt when={true} message="Are you sure you want to leave" /> */}
-      <CourseForm course={course} onInputChange={handleInputChange} />
+      <CourseForm course={course} onChange={handleChange} />
     </div>
   );
 };
