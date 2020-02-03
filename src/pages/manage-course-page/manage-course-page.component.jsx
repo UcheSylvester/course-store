@@ -7,7 +7,6 @@ import CourseForm from "../../components/course-form/course-form.component";
 // import { Prompt } from "react-router-dom";
 
 const ManageCoursePage = ({ history, match }) => {
-  console.log(match);
   const [errors, setErrors] = useState({});
 
   const [course, setCourse] = useState({
