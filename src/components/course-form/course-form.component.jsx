@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import TextInput from "../text-input/text-input.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -49,5 +50,12 @@ const CourseForm = ({
     </CustomButton>
   </form>
 );
+
+CourseForm.propTypes = {
+  course: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired
+};
 
 export default CourseForm;
