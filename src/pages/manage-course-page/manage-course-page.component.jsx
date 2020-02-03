@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as courseApi from "../../api/courseApi";
+import { toast } from "react-toastify";
 
 import CourseForm from "../../components/course-form/course-form.component";
-import { toast } from "react-toastify";
 // import { Prompt } from "react-router-dom";
 
-const ManageCoursePage = ({ history }) => {
+const ManageCoursePage = ({ history, match }) => {
+  console.log(match);
   const [errors, setErrors] = useState({});
 
   const [course, setCourse] = useState({
@@ -17,14 +18,22 @@ const ManageCoursePage = ({ history }) => {
     slug: ""
   });
 
+  useEffect(() => {
+    const slug = match.params.slug;
+    if (slug)
+      courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
+  }, [match.params.slug]);
+
+  // handling input changes
   const handleChange = event => {
     const { value, name } = event.target;
 
     const updatedCourse = { ...course, [name]: value };
 
-    setCourse(updatedCourse, []);
+    setCourse(updatedCourse);
   };
 
+  // handling form validation
   const formIsValid = () => {
     const _errors = {};
 
@@ -38,6 +47,7 @@ const ManageCoursePage = ({ history }) => {
     return Object.keys(_errors).length === 0;
   };
 
+  // handling form submission
   const handleSubmit = event => {
     event.preventDefault();
     if (!formIsValid()) return;
