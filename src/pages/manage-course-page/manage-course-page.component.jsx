@@ -20,7 +20,6 @@ const ManageCoursePage = ({ history }) => {
     const updatedCourse = { ...course, [name]: value };
 
     setCourse(updatedCourse, []);
-    // console.log(name, value);
   };
 
   const handleSubmit = event => {
