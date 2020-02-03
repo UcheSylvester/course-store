@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const TextInput = ({ label, onChange, error, id, ...otherProps }) => (
-  <div className={`${error && error.length} ? has-error : '' form-group`}>
+  <div className={`${error && error.length ? "has-error" : ""} form-group`}>
     <label htmlFor={id}>{label}</label>
     <div className="field">
       <input className="form-control" onChange={onChange} {...otherProps} />
