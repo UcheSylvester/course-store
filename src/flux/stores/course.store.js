@@ -56,7 +56,13 @@ Dispatcher.register(action => {
     case actionTypes.LOAD_COURSE:
       _courses = action.courses;
       store.emitChange();
+      break;
 
+    case actionTypes.DELETE_COURSE:
+      _courses = _courses.filter(
+        course => course.id !== parseInt(action.courseId, 10)
+      );
+      store.emitChange();
       break;
 
     default:

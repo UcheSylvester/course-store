@@ -28,3 +28,13 @@ export const loadCourses = () => {
     });
   });
 };
+
+export const deleteCourse = courseId => {
+  console.log(courseId);
+  return courseApi.deleteCourse(courseId).then(() => {
+    dispatcher.dispatch({
+      actionType: actionTypes.LOAD_COURSE,
+      courseId: courseId
+    });
+  });
+};

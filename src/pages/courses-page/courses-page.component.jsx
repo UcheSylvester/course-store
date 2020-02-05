@@ -29,7 +29,7 @@ const CoursesPage = () => {
       <Link to="/course" className="btn btn-primary">
         Add Course
       </Link>
-      <CourseList courses={courses} />
+      <CourseList courses={courses} deleteCourse={courseActions.deleteCourse} />
     </>
   );
 };
