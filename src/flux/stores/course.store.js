@@ -6,7 +6,7 @@ import actionTypes from "../actions/action.types";
 
 const CHANGE_EVENT = "changer";
 
-const _courses = [];
+let _courses = [];
 
 class CourseStore extends EventEmitter {
   addChangeListener(callback) {
@@ -34,11 +34,20 @@ class CourseStore extends EventEmitter {
 
 const store = new CourseStore();
 
+// Registrating actions and emiting updated store
 Dispatcher.register(action => {
   switch (action.actionType) {
+    // pushing the created courses to _courses and emiting the store
     case actionTypes.CREATE_COURSE:
       _courses.push(action.course);
       store.emitChange();
+      break;
+
+    // setting _courses to the courses fetched from loadCouse action and emiting
+    case actionTypes.LOAD_COURSE:
+      _courses = action.courses;
+      store.emitChange();
+
       break;
 
     default:

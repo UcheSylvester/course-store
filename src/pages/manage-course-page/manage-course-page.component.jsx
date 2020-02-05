@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import * as courseApi from "../../api/courseApi";
 import { toast } from "react-toastify";
 
+import courseStore from "../../flux/stores/course.store";
+import * as courseActions from "../../flux/actions/course.actions";
+
 import CourseForm from "../../components/course-form/course-form.component";
-// import { Prompt } from "react-router-dom";
 
 const ManageCoursePage = ({ history, match }) => {
   const [errors, setErrors] = useState({});
@@ -17,10 +18,13 @@ const ManageCoursePage = ({ history, match }) => {
     slug: ""
   });
 
+  // getting course by slug, using the courseStore getCourseBySlug function
   useEffect(() => {
+    // getting the slug from the match params
     const slug = match.params.slug;
-    if (slug)
-      courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
+
+    // checking if slug before getting the course
+    if (slug) setCourse(courseStore.getCourseBySlug(slug));
   }, [match.params.slug]);
 
   // handling input changes
@@ -46,12 +50,17 @@ const ManageCoursePage = ({ history, match }) => {
     return Object.keys(_errors).length === 0;
   };
 
-  // handling form submission
+  // handling form submission for creating courses
   const handleSubmit = event => {
     event.preventDefault();
     if (!formIsValid()) return;
 
-    courseApi.saveCourse(course).then(() => {
+    /***
+     * since this is an action performed by the user for saving courses
+     * we call the saveCourse action from our course actions, passing in
+     * the action to be saved.
+     */
+    courseActions.saveCourse(course).then(() => {
       toast.success("Course saved successfully!");
       history.push("/courses");
     });
