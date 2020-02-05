@@ -12,7 +12,9 @@ export const saveCourse = course => {
   return courseApi.saveCourse(course).then(savedCourse => {
     // sending the saved course to the dispatcher
     dispatcher.dispatch({
-      actionType: actionTypes.CREATE_COURSE,
+      actionType: course.id
+        ? actionTypes.UPDATE_COURSE
+        : actionTypes.CREATE_COURSE,
       course: savedCourse
     });
   });

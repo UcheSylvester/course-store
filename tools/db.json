@@ -5,7 +5,7 @@
       "title": "Securing React Apps with Auth0",
       "slug": "react-auth0-authentication-security",
       "authorId": 1,
-      "category": "JavaScript"
+      "category": "JavaScr"
     },
     {
       "id": 2,
@@ -80,7 +80,7 @@
     },
     {
       "id": 12,
-      "title": "Memory Game",
+      "title": "Memory",
       "authorId": 2,
       "category": "Javascript",
       "slug": "memory-game",

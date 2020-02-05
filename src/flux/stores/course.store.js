@@ -43,6 +43,15 @@ Dispatcher.register(action => {
       store.emitChange();
       break;
 
+    // updating courses: check if the course id is the same as the course in the action
+    // then replace that course in _courses array
+    case actionTypes.UPDATE_COURSE:
+      _courses = _courses.map(course =>
+        course.id === action.course.id ? action.course : course
+      );
+      store.emitChange();
+      break;
+
     // setting _courses to the courses fetched from loadCouse action and emiting
     case actionTypes.LOAD_COURSE:
       _courses = action.courses;
