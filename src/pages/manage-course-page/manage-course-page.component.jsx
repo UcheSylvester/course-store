@@ -10,6 +10,8 @@ import CourseForm from "../../components/course-form/course-form.component";
 const ManageCoursePage = ({ history, match }) => {
   const [errors, setErrors] = useState({});
 
+  const [courses, setCourses] = useState(courseStore.getCourses());
+
   const [course, setCourse] = useState({
     id: null,
     title: "",
@@ -18,14 +20,28 @@ const ManageCoursePage = ({ history, match }) => {
     slug: ""
   });
 
+  const onChange = () => setCourses(courseStore.getCourses());
+
   // getting course by slug, using the courseStore getCourseBySlug function
   useEffect(() => {
     // getting the slug from the match params
     const slug = match.params.slug;
 
-    // checking if slug before getting the course
-    if (slug) setCourse(courseStore.getCourseBySlug(slug));
-  }, [match.params.slug]);
+    /***
+     * for when page is reloaded on the manage course page
+     * check if courses doesn't exit and loadCourses if it doesn't
+     * else get the course loaded by slug
+     */
+    if (!courses.length) {
+      courseActions.loadCourses();
+    } else if (slug) {
+      setCourse(courseStore.getCourseBySlug(slug));
+    }
+
+    courseStore.addChangeListener(onChange);
+
+    return () => courseStore.removeChangeListener(onChange);
+  }, [match.params.slug, courses.length]);
 
   // handling input changes
   const handleChange = event => {
