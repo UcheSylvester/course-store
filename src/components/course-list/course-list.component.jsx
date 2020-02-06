@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import Course from "../course/course.component";
+// import Course from "../course/course.component";
 import { Link } from "react-router-dom";
 
 const CourseList = ({ courses, deleteCourse }) => (
