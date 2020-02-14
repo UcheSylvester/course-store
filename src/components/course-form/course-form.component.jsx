@@ -28,6 +28,7 @@ const CourseForm = ({
       value={authorId || ""}
       onChange={onChange}
     >
+      <option value="" />
       <option value="1">Cory House</option>
       <option value="2">Scot Allen</option>
     </select>
